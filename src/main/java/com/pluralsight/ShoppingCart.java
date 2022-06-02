@@ -1,6 +1,8 @@
 package com.pluralsight;
 
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.inject.Inject;
 
 public class ShoppingCart {
@@ -21,6 +23,26 @@ public class ShoppingCart {
  public void addCartItem(CartItem cartItem) {
   cartItems.add(cartItem);
  }
+ 
+ public void deleteCartItem(int index) {
+	   try {
+		   cartItems.remove(index);
+	   }catch(IndexOutOfBoundsException iobe) {
+		   System.out.println(iobe.getMessage());
+	   }
+	   calculateOrderTotal();
+		
+	}
+ 
+ public void updateCartItem(int index, int quantity) {
+	 try {
+		CartItem cartItem = cartItems.get(index);
+		cartItem.setQuantity(quantity);
+	 }catch(IndexOutOfBoundsException iobe) {
+		 System.out.println(iobe.getMessage());
+	 }
+	 calculateOrderTotal();
+	}
 
  public CartItem getCartItem(int iItemIndex) {
   CartItem cartItem = null;
@@ -52,5 +74,7 @@ public class ShoppingCart {
   }
   setOrderTotal(dblTotal);
  }
+
+
 
 }

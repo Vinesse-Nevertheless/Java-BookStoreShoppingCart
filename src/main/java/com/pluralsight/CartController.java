@@ -1,5 +1,7 @@
 package com.pluralsight;
 
+import static org.mockito.ArgumentMatchers.intThat;
+
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -44,6 +46,10 @@ public class CartController extends HttpServlet {
 			switch(action) {
 				case "/addcart":
 					 addToCart(request, response);
+			    case "/delete":
+				     deleteFromCart(request, response);
+				case "/update":
+					     updateCart(request, response);
            break;
         default:
            break;
@@ -56,7 +62,45 @@ public class CartController extends HttpServlet {
 		response.sendRedirect("../ShoppingCart.jsp");
 	}
 
-  protected void addToCart(HttpServletRequest request, HttpServletResponse response)
+  private void updateCart(HttpServletRequest request, HttpServletResponse response) 
+		  throws ServletException, IOException{
+	   HttpSession session = request.getSession();
+	   String idxStr = request.getParameter("index");
+	   int index = Integer.parseInt(idxStr);
+	   String quantityStr = request.getParameter("quantity");
+	   int quantity = Integer.parseInt(quantityStr);
+
+	  
+	   ShoppingCart objCartBean = (ShoppingCart) session.getAttribute("cart");
+	   
+	// Update this item and quantity to the ShoppingCart
+	   objCartBean.updateCartItem(index, quantity);
+		
+	}
+
+private void deleteFromCart(HttpServletRequest request, HttpServletResponse response) 
+  throws ServletException, IOException{
+	   HttpSession session = request.getSession();
+	   String idxStr = request.getParameter("index");
+	   int index = Integer.parseInt(idxStr);
+/*
+  The Session should already have a "cart" attribute saved to it from 
+  when the item was originally added to the cart (see the addToCart()
+  method). We want to get that ShoppingCart and store it in a variable,
+  so use session’s getAttribute() method with the key "cart" as a 
+  parameter and cast the result to a ShoppingCart object.
+  
+  getAttribute("cart") gets a shoppingcart object to use to call delete method on
+ */
+	   ShoppingCart objCartBean = (ShoppingCart)session.getAttribute("cart");
+
+		 // Delete this item and quantity to the ShoppingCart
+	   objCartBean.deleteCartItem(index);
+	  }
+	  
+		
+
+protected void addToCart(HttpServletRequest request, HttpServletResponse response)
 		throws ServletException, IOException {
    HttpSession session = request.getSession();
    String idStr = request.getParameter("id");
