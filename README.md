@@ -1,18 +1,31 @@
-# Java-BookStoreShoppingCart
-# Add a Session-based Shopping Cart to a Java Book Store Web App
+# 📚 Java Book Store: Session-Based Shopping Cart
 
-https://app.pluralsight.com/projects/add-a-session-based-shopping-cart-to-a-java-book-store-web-app
+### 📝 Project Overview
+This project involved maintaining and extending a legacy Java Web Application. The primary goal was to implement missing CRUD functionality within a session-based shopping cart system.
 
-In this project you’ll follow along with our instructions and add update and delete features to the shopping cart section of an existing Java Web application.
+### 🛠️ Technical Challenges & Solutions
 
-Setup
-Set up your local environment for projects. We'll walk you through everything you need to know, including how to install and configure your environment to be able to complete all of the tasks.
+#### 1. Session State Management
+* **Challenge:** The original application could add items to a cart, but users had no way to adjust quantities or remove items without clearing the entire session.
+* **Implementation:** Leveraged the `HttpSession` API to manage a collection of book objects, ensuring state persistence as the user navigated the storefront.
 
-Adding Update Buttons to the Shopping Cart
-The Shopping Cart Feature in this app is only partially done. Add to Cart works, but there’s no way to edit the Cart, so we want to be able to Update and Delete Book quantities in the Cart.
 
-Deleting from the Shopping Cart
-Now that a Delete button exists, we're going to implement the functionality to delete a book from the Shopping Cart Session.
 
-Updating the Shopping Cart
-Finally, we will add the functionality for the Update button in the Shopping cart.
+#### 2. Implementing Cart CRUD Operations
+* **Update:** Developed logic to synchronize the quantity input from the UI with the backend session object.
+* **Delete:** Implemented a removal trigger that identified specific book IDs within the session collection and updated the total cost dynamically.
+
+
+
+### 🎓 Learning Outcomes (Apprenticeship Context)
+This was a guided project completed during my software development apprenticeship (circa 2022). It served as a deep dive into:
+* **Java Servlets & JSP:** Understanding the request-response cycle in a web environment.
+* **Git Workflow:** Using branch-based development to implement modular features (Module 1-3).
+* **Legacy Codebases:** Navigating and modifying code written by other developers.
+
+---
+### 🔗 Related Modules
+* **[Database Admin Module](https://github.com/Vinesse-Nevertheless/Java-BookStore):** Explore the persistence layer where the bookstore inventory is managed and stored permanently.
+  
+---
+*Note: This project was completed as part of a Pluralsight Hands-on Lab to master Java Web fundamentals.*
