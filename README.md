@@ -24,7 +24,7 @@ This was a guided project completed during my software development apprenticeshi
 * **Legacy Codebases:** Navigating and modifying code written by other developers.
 
 
-<img width="980" height="840" alt="![Shopping Cart Update Sequence Diagram](./shopping-cart-sequence.png)" src="https://github.com/user-attachments/assets/0f6cd76a-9217-47f5-84e5-cc0ce04986b4" />
+<img width="780" height="640" alt="![Shopping Cart Update Sequence Diagram](./shopping-cart-sequence.png)" src="https://github.com/user-attachments/assets/0f6cd76a-9217-47f5-84e5-cc0ce04986b4" />
 
 
 ---
